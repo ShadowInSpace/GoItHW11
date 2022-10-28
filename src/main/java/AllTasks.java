@@ -1,20 +1,20 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class AllTasks {
 
     //First Task metod
     public static String filler(List<String> names) {
-        int i = 0;
-        StringBuilder str = new StringBuilder();
-        for (String name : names) {
-            if (!(i % 2 == 0)) {
-                str.append(i).append(" ").append(name).append(",");
-            }
-            i++;
-        }
-        return str.toString();
+
+                String line = IntStream
+                .range(0, names.size())
+                .filter(i -> i % 2 != 0)
+                .mapToObj(i -> i + ". " + names.get(i))
+                .collect(Collectors.joining(", "));
+
+        return line;
     }
 
     //Second task
